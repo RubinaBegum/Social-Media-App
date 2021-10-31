@@ -1,0 +1,3 @@
+{
+    "mongoURI":"mongodb+srv://Rubina:<password>@devconnector.j65ws.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
