@@ -1,3 +1,6 @@
 {
-    "mongoURI":"mongodb+srv://Rubina:<password>@devconnector.j65ws.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    "mongoURI":"mongodb+srv://Rubina:Rubina@devconnector.j65ws.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret":"mysecrettoken",
+    "githubClientId":"d5964da6e988e7fe78cb",
+    "githubSecret":"2fa3e151503ac0f9a7dabad8b442ef88465dc76e"
 }
