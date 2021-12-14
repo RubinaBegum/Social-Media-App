@@ -5,6 +5,8 @@ const router = express.Router();
 const auth=require('../../middleware/auth');
 const Profile=require('../../Models/Profile');
 const User=require('../../Models/User');
+const Post=require('../../Models/Post');
+
 const {check,validationResult}=require('express-validator');
 // @route GET   api/profile/me
 // @desc Test   Get current users profile
@@ -25,7 +27,7 @@ router.get('/me',auth,async(req, res) => {
     }
 });
 
-// @route   POST api/profile/me
+// @route   POST api/profile/
 // @desc    Create or update user profile
 // @access  Private
 router.post(
@@ -123,7 +125,7 @@ router.get('/user/:user_id',async(req, res) => {
         const profile=await Profile.findOne({user:req.params.user_id}).populate('user',['name','avatar']);
 
         if(!profile) {
-            return res.status(400).json({msg:'Profile not found'});
+             return res.status(400).json({msg:'Profile not found'});
         }
 
         res.json(profile);
@@ -153,6 +155,7 @@ router.get('/',async(req, res) => {
 // @access  private
 router.delete('/',auth,async(req, res) => {
     try {
+        await Post.deleteMany({user:req.user.id})
         await Profile.findOneAndRemove({user:req.user.id});
 
         await Profile.findOneAndRemove({_id:req.user.id});
